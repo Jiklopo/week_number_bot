@@ -13,14 +13,10 @@ def week_number(message):
 
 
 while True:
-    cnt = 0
     try:
         print('Starting...')
         bot.polling()
     except:
-        #cnt = 1
         print('Some error has occurred.')
     finally:
-        time.sleep(10 + 600 * cnt)
         print('Restarting...')
-        cnt = 0
