@@ -11,4 +11,5 @@ def week_number(message):
     bot.reply_to(message, f"Текущая неделя: {week()}")
 
 
-bot.polling()
+while True:
+    bot.polling()
