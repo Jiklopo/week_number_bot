@@ -1,4 +1,5 @@
 import os
+import time
 from telebot import TeleBot
 from week import get_current_week as week
 
@@ -12,4 +13,14 @@ def week_number(message):
 
 
 while True:
-    bot.polling()
+    cnt = 0
+    try:
+        print('Starting...')
+        bot.polling()
+    except:
+        #cnt = 1
+        print('Some error has occurred.')
+    finally:
+        time.sleep(10 + 600 * cnt)
+        print('Restarting...')
+        cnt = 0
