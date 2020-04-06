@@ -1,8 +1,8 @@
-from datetime import date
+from datetime import datetime, timedelta
 
-semester_start = date(2020, 1, 13)
+semester_start = datetime(2020, 1, 13)
 
 
 def get_current_week():
-    d = date.today() - semester_start
+    d = datetime.today() + timedelta(hours=6) - semester_start
     return d.days // 7 + 1
