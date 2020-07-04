@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
+import os
 
-semester_start = datetime(2020, 1, 13)
+semester_start = datetime.strptime(os.getenv('SEMESTER_START'), '%d/%m/%y %H:%M:%S')
 
 
 def get_current_week():
