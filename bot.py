@@ -23,7 +23,7 @@ def week_number(message):
 
 @bot.inline_handler(lambda query: True)
 def inline_week_number(query):
-    bot.answer_inline_query(query.id, get_current_week())
+    bot.answer_inline_query(query.id, [get_current_week()])
 
 
 @server.route('/' + TOKEN, methods=['POST'])
