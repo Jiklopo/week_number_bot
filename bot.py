@@ -1,12 +1,12 @@
 import os
-from datetime import datetime, timedelta
-
 import telebot
+from datetime import datetime, timedelta
 from flask import Flask, request
-from telebot import TeleBot
+from telebot import TeleBot, types
 
 TOKEN = os.getenv('TOKEN')
 SEMESTER_START = datetime.strptime(os.getenv('SEMESTER_START'), '%d/%m/%y %H:%M:%S')
+APP_URL = 'http://week-number-bot.herokuapp.com/'
 bot = TeleBot(TOKEN)
 server = Flask(__name__)
 
@@ -23,7 +23,8 @@ def week_number(message):
 
 @bot.inline_handler(lambda query: True)
 def inline_week_number(query):
-    bot.answer_inline_query(query.id, [get_current_week()])
+    r = types.InlineQueryResultArticle(id='1', title='Номер недели', input_message_content=types.InputTextMessageContent(message_text=get_current_week()))
+    bot.answer_inline_query(query.id, [r])
 
 
 @server.route('/' + TOKEN, methods=['POST'])
@@ -35,7 +36,7 @@ def get_message():
 @server.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url='http://week-number-bot.herokuapp.com/' + TOKEN)
+    bot.set_webhook(url=APP_URL + TOKEN)
     return "!", 200
 
 
