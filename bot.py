@@ -21,7 +21,7 @@ def week_number(message):
     bot.reply_to(message, get_current_week())
 
 
-@bot.inline_handler(True)
+@bot.inline_handler(lambda query: True)
 def inline_week_number(query):
     bot.answer_inline_query(query.id, get_current_week())
 
