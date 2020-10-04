@@ -2,3 +2,5 @@
 This is a telegram bot with one simple function: show current week number.
 It can be deployed to Heroku.
 You just need to add config var TOKEN.
+
+This bot now lives at https://github.com/Jiklopo/botnet
